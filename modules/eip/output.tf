@@ -1,0 +1,1 @@
+output "id" { value = aws_eip.elastic_ip.id }
