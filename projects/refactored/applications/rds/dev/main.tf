@@ -37,7 +37,7 @@ data "terraform_remote_state" "secrets" {
 
   config = {
     bucket = "liverpool-tf-state"
-    key    = "project02/applications/secrets/dev/terraform.tfstate"
+    key    = "project02/common/secrets/dev/terraform.tfstate"
     region = "us-west-1"
   }
 }
