@@ -4,7 +4,7 @@
 
 module "app2_target_group_blue" {
   source                = "git::https://github.com/H00065796/dissertation//modules/load_balancer_target_group"
-  vpc_id                = data.terraform_remote_state.dev.outputs.vpc_id
+  vpc_id                = data.terraform_remote_state.env.outputs.vpc_id
   target_group_prefix   = var.app2_target_group1_prefix
   protocol              = var.app2_target_group_protocol
   health_check_protocol = var.app2_health_check_protocol
@@ -12,13 +12,13 @@ module "app2_target_group_blue" {
   port                  = var.app2_target_group1_port
   target_type           = "instance"
   health_check_enabled  = true
-  env_tag               = data.terraform_remote_state.dev.outputs.env_tag
+  env_tag               = data.terraform_remote_state.env.outputs.env_tag
   load_balancer_arn     = module.app_load_balancer.arn
 }
 
 module "app2_target_group_green" {
   source                = "git::https://github.com/H00065796/dissertation//modules/load_balancer_target_group"
-  vpc_id                = data.terraform_remote_state.dev.outputs.vpc_id
+  vpc_id                = data.terraform_remote_state.env.outputs.vpc_id
   target_group_prefix   = var.app2_target_group2_prefix
   protocol              = var.app2_target_group_protocol
   health_check_protocol = var.app2_health_check_protocol
@@ -26,6 +26,6 @@ module "app2_target_group_green" {
   port                  = var.app2_target_group2_port
   target_type           = "instance"
   health_check_enabled  = true
-  env_tag               = data.terraform_remote_state.dev.outputs.env_tag
+  env_tag               = data.terraform_remote_state.env.outputs.env_tag
   load_balancer_arn     = module.app_load_balancer.arn
 }
