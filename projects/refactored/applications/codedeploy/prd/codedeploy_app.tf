@@ -4,7 +4,7 @@
 
 module "app_codedeploy" {
   source           = "git::https://github.com/H00065796/dissertation//modules/codedeploy_app"
-  name             = "${data.terraform_remote_state.dev.outputs.env_name}-${data.terraform_remote_state.dev.outputs.app_name}"
+  name             = "${data.terraform_remote_state.env.outputs.env_name}-${data.terraform_remote_state.env.outputs.app_name}"
   compute_platform = "ECS"
 }
 
@@ -16,7 +16,7 @@ module "app_deployment_group" {
   source                    = "git::https://github.com/H00065796/dissertation//modules/codedeploy_deployment_group"
   codedeploy_app_name       = module.app_codedeploy.name
   deployment_config_name    = "CodeDeployDefault.ECSAllAtOnce"
-  deployment_group_name     = "${data.terraform_remote_state.dev.outputs.env_name}-${data.terraform_remote_state.dev.outputs.app_name}-deployment-group"
+  deployment_group_name     = "${data.terraform_remote_state.env.outputs.env_name}-${data.terraform_remote_state.env.outputs.app_name}-deployment-group"
   iam_service_role          = module.codedeploy_iam_role.arn
   rollback_enabled          = true
   rollback_events           = "DEPLOYMENT_FAILURE"
