@@ -4,10 +4,10 @@
 
 module "app_security_group" {
   source         = "git::https://github.com/H00065796/dissertation//modules/security_group"
-  name           = "${data.terraform_remote_state.dev.outputs.app_name}-ec2-security-group"
+  name           = "${data.terraform_remote_state.env.outputs.app_name}-ec2-security-group"
   description    = "ECS - EC2 Security Group"
-  vpc_id         = data.terraform_remote_state.dev.outputs.vpc_id
-  env_tag        = data.terraform_remote_state.dev.outputs.env_tag
+  vpc_id         = data.terraform_remote_state.env.outputs.vpc_id
+  env_tag        = data.terraform_remote_state.env.outputs.env_tag
 }
 
 ##############################################
@@ -35,7 +35,7 @@ module "app_security_rules_egress_all" {
   from_port         = 0
   to_port           = 0
   protocol          = "-1"
-  cidr_blocks       = data.terraform_remote_state.dev.outputs.destination_network
+  cidr_blocks       = data.terraform_remote_state.env.outputs.destination_network
   security_group_id = module.app_security_group.id
   description       = "App to All"
 }
