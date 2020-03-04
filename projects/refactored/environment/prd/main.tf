@@ -14,7 +14,7 @@ terraform {
 
   backend "s3" {
     bucket = "liverpool-tf-state"
-    key    = "project02/environment/dev/terraform.tfstate"
+    key    = "project02/environment/prd/terraform.tfstate"
     region = "us-west-1"
   }
 }
