@@ -22,7 +22,7 @@ terraform {
 ##############################################
 # Referenced Projects
 ##############################################
-data "terraform_remote_state" "stg" {
+data "terraform_remote_state" "env" {
   backend = "s3"
 
   config = {

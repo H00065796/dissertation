@@ -4,11 +4,11 @@
 
 module "web_launch_configuration_v1" {
   source                      = "git::https://github.com/H00065796/dissertation//modules/launch_configuration"
-  name                        = "TF-LC-${data.terraform_remote_state.dev.outputs.env_name}-${data.terraform_remote_state.dev.outputs.web_name}-v1"
+  name                        = "TF-LC-${data.terraform_remote_state.env.outputs.env_name}-${data.terraform_remote_state.env.outputs.web_name}-v1"
   associate_public_ip_address = true
   ebs_optimized               = false
   enable_monitoring           = true
-  iam_instance_profile        = "arn:aws:iam::${data.terraform_remote_state.dev.outputs.aws_account_id}:instance-profile/${module.ec2_ecs_instance_iam_instance_profile.name}"
+  iam_instance_profile        = "arn:aws:iam::${data.terraform_remote_state.env.outputs.aws_account_id}:instance-profile/${module.ec2_ecs_instance_iam_instance_profile.name}"
   image_id                    = data.aws_ami.latest_ecs.id
   instance_type               = "t3.micro"
   security_group_id           = module.web_security_group.id
@@ -26,11 +26,11 @@ EOF
 
 module "web_launch_configuration_v2" {
   source                      = "git::https://github.com/H00065796/dissertation//modules/launch_configuration"
-  name                        = "TF-LC-${data.terraform_remote_state.dev.outputs.env_name}-${data.terraform_remote_state.dev.outputs.web_name}-v2"
+  name                        = "TF-LC-${data.terraform_remote_state.env.outputs.env_name}-${data.terraform_remote_state.env.outputs.web_name}-v2"
   associate_public_ip_address = true
   ebs_optimized               = false
   enable_monitoring           = true
-  iam_instance_profile        = "arn:aws:iam::${data.terraform_remote_state.dev.outputs.aws_account_id}:instance-profile/${module.ec2_ecs_instance_iam_instance_profile.name}"
+  iam_instance_profile        = "arn:aws:iam::${data.terraform_remote_state.env.outputs.aws_account_id}:instance-profile/${module.ec2_ecs_instance_iam_instance_profile.name}"
   image_id                    = data.aws_ami.latest_ecs.id
   instance_type               = "t3.micro"
   security_group_id           = module.web_security_group.id
