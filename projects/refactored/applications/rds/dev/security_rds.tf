@@ -6,8 +6,8 @@ module "rds_security_group" {
   source         = "git::https://github.com/H00065796/dissertation//modules/security_group"
   name           = "rds-security-group"
   description    = "RDS Security Group"
-  vpc_id         = data.terraform_remote_state.dev.outputs.vpc_id
-  env_tag        = data.terraform_remote_state.dev.outputs.env_tag
+  vpc_id         = data.terraform_remote_state.env.outputs.vpc_id
+  env_tag        = data.terraform_remote_state.env.outputs.env_tag
 }
 
 ##############################################
@@ -20,7 +20,7 @@ module "rds_security_rules_ingress_app1" {
   from_port                = 3306
   to_port                  = 3306
   protocol                 = "tcp"
-  cidr_blocks              = "${data.terraform_remote_state.dev.outputs.app_subnet1}${data.terraform_remote_state.dev.outputs.app_subnet_mask}"
+  cidr_blocks              = "${data.terraform_remote_state.env.outputs.app_subnet1}${data.terraform_remote_state.env.outputs.app_subnet_mask}"
   security_group_id        = module.rds_security_group.id
   description              = "RDS Traffic from App 1"
 }
@@ -31,7 +31,7 @@ module "rds_security_rules_ingress_app2" {
   from_port                = 3306
   to_port                  = 3306
   protocol                 = "tcp"
-  cidr_blocks              = "${data.terraform_remote_state.dev.outputs.app_subnet2}${data.terraform_remote_state.dev.outputs.app_subnet_mask}"
+  cidr_blocks              = "${data.terraform_remote_state.env.outputs.app_subnet2}${data.terraform_remote_state.env.outputs.app_subnet_mask}"
   security_group_id        = module.rds_security_group.id
   description              = "RDS Traffic from App 2"
 }
@@ -42,7 +42,7 @@ module "rds_security_rules_ingress_app3" {
   from_port                = 3306
   to_port                  = 3306
   protocol                 = "tcp"
-  cidr_blocks              = "${data.terraform_remote_state.dev.outputs.app_subnet3}${data.terraform_remote_state.dev.outputs.app_subnet_mask}"
+  cidr_blocks              = "${data.terraform_remote_state.env.outputs.app_subnet3}${data.terraform_remote_state.env.outputs.app_subnet_mask}"
   security_group_id        = module.rds_security_group.id
   description              = "RDS Traffic from App 3"
 }
@@ -57,7 +57,7 @@ module "rds_security_rules_egress_app1" {
   from_port                = 3306
   to_port                  = 3306
   protocol                 = "tcp"
-  cidr_blocks              = "${data.terraform_remote_state.dev.outputs.app_subnet1}${data.terraform_remote_state.dev.outputs.app_subnet_mask}"
+  cidr_blocks              = "${data.terraform_remote_state.env.outputs.app_subnet1}${data.terraform_remote_state.env.outputs.app_subnet_mask}"
   security_group_id        = module.rds_security_group.id
   description              = "RDS Traffic to App 1"
 }
@@ -68,7 +68,7 @@ module "rds_security_rules_egress_app2" {
   from_port                = 3306
   to_port                  = 3306
   protocol                 = "tcp"
-  cidr_blocks              = "${data.terraform_remote_state.dev.outputs.app_subnet2}${data.terraform_remote_state.dev.outputs.app_subnet_mask}"
+  cidr_blocks              = "${data.terraform_remote_state.env.outputs.app_subnet2}${data.terraform_remote_state.env.outputs.app_subnet_mask}"
   security_group_id        = module.rds_security_group.id
   description              = "RDS Traffic to App 2"
 }
@@ -79,7 +79,7 @@ module "rds_security_rules_egress_app3" {
   from_port                = 3306
   to_port                  = 3306
   protocol                 = "tcp"
-  cidr_blocks              = "${data.terraform_remote_state.dev.outputs.app_subnet3}${data.terraform_remote_state.dev.outputs.app_subnet_mask}"
+  cidr_blocks              = "${data.terraform_remote_state.env.outputs.app_subnet3}${data.terraform_remote_state.env.outputs.app_subnet_mask}"
   security_group_id        = module.rds_security_group.id
   description              = "RDS Traffic to App 3"
 }

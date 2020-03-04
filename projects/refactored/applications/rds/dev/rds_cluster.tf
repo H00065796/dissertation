@@ -4,8 +4,8 @@
 
 module "mysql_rds_cluster" {
   source                            = "git::https://github.com/H00065796/dissertation//modules/rds_cluster"
-  cluster_name                      = "${data.terraform_remote_state.dev.outputs.env_name}-mysql"
-  availability_zones                = [data.terraform_remote_state.dev.outputs.az_1, data.terraform_remote_state.dev.outputs.az_2, data.terraform_remote_state.dev.outputs.az_3]
+  cluster_name                      = "${data.terraform_remote_state.env.outputs.env_name}-mysql"
+  availability_zones                = [data.terraform_remote_state.env.outputs.az_1, data.terraform_remote_state.env.outputs.az_2, data.terraform_remote_state.env.outputs.az_3]
   cluster_engine                    = "aurora-mysql"
   cluster_engine_version            = "5.7.mysql_aurora.2.03.2"
   cluster_engine_mode               = "provisioned"
@@ -20,6 +20,6 @@ module "mysql_rds_cluster" {
   db_subnet_group_name              = module.db_subnet_group.name
   db_subnet_group_arn               = module.db_subnet_group.arn
   db_port                           = 3306
-  env_tag                           = data.terraform_remote_state.dev.outputs.env_tag
+  env_tag                           = data.terraform_remote_state.env.outputs.env_tag
   vpc_security_group_ids            = [ module.rds_security_group.id]
 }
