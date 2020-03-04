@@ -3,8 +3,8 @@
 ##############################################
 # Provide an account Id
 # aws_account_id          = ""
-env_name                = "liverpool-refactored"
-env_tag                 = "refactored"
+env_name                = "liverpool-refactored-dev"
+env_tag                 = "refactored-dev"
 region                  = "us-east-2"
 az_1                    = "us-east-2a"
 az_2                    = "us-east-2b"
