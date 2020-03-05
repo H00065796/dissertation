@@ -21,4 +21,4 @@ The projects directory contains the Infrastructure as Code for both the Singular
 
 The architecture of both projects are based on the following design.
 
-![Cloud Architecture](source/it-artefact-aws-cloud-architecture.png)
+![Cloud Architecture](source/it-artefact-aws-cloud-architecture-v2.png)
