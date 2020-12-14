@@ -7,6 +7,6 @@ resource "aws_lb" "main" {
   enable_deletion_protection = var.deletion_protection
   
   tags = {
-    Env = var.env_tag
+    Env = var.tag_env
   }
 }
