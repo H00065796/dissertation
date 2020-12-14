@@ -13,7 +13,7 @@ variable "vpc_id" {
 variable "target_type" {
   type = string
 }
-variable "env_tag" {
+variable "tag_env" {
   type = string
 }
 variable "health_check_path" {
