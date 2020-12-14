@@ -10,3 +10,7 @@ variable "subnet_mask" {
 variable "env_tag" {
     type = string
 }
+variable "enable_dns_hostnames" {
+  type = bool
+  default = false
+}
