@@ -1,6 +1,6 @@
 resource "aws_lb_target_group" "main" {
 
-  name = "${var.target_group_prefix}-${var.target_type}-${var.env_tag}"
+  name = "${var.target_group_prefix}-${var.target_type}-${var.tag_env}"
   protocol    = var.protocol
   port        = var.port
   vpc_id      = var.vpc_id
@@ -23,6 +23,6 @@ resource "aws_lb_target_group" "main" {
   }
 
   tags = {
-    Env = var.env_tag
+    Env = var.tag_env
   }
 }
