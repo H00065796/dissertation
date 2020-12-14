@@ -20,6 +20,6 @@ variable "security_groups" {
 variable "deletion_protection" {
   type = string
 }
-variable "env_tag" {
+variable "tag_env" {
   type = string
 }
